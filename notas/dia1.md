@@ -53,6 +53,69 @@ Lo cierto es que nos ENCANTAN las pruebas !!!
         - Pruebas de carga          Cómo se degrada el sistema ante GRANDES conjuntos de datos.
         - Pruebas de UX             Cómo de facil es usar un sistema por los usaurios
 
+
+###
+
+- Pruebas de caja blanca: Cuando conocemos los detalles de la implementación... y vamos buscando los casos especiales de la misma
+   Generalmente estas las realizan los desarrolladores... que conocen el código
+    AQUI ME ECHA UNA MANO EL SONARQUBE
+    - Complejidad ciclomática: Cantidad de caminos que puede tomar un código
+    - Complejidad cognitiva:   Cómo de complejo es para un ser humano entender un código
+
+        Hace 20 años al que escribía el código más friki se le idolatraba... VAYA MAQUINA ... UOOOOOO
+        Hoy en día está despedido al día sigiuente.... por pringao !!!!!
+
+
+        // tarea 1
+        if(condicion1){
+            // tarea 2
+            if(condicion2){
+                // tarea 3
+            }else{
+                // tarea 4
+            }
+        }else if (condicion3){
+            // tarea 5
+            if(condicion4){
+                // tarea6
+            }else if (condicion5){
+                // tarea7
+            }
+        }
+        
+        tarea 1 (condicion1) tarea 2 (condicion2) tarea3
+        tarea 1 (condicion1) tarea 2 (!condicion2) tarea 4
+        tarea 1 (!condicion1 && condicion3) tarea 5 (condicion 4) tarea 6
+        tarea 1 (!condicion1 && condicion3) tarea 5 (!condicion 4 && condicion5) tarea 7
+        tarea 1 (!condicion1 && condicion3) tarea 5 (!condicion 4 && !condicion5)
+        tarea 1 (!condicion1 && !condicion3)
+        
+        
+        Complejidad ciclomática? 6
+        Complejidad cognitiva?  Alta
+        
+        switch(variable1){
+            case 1:
+                tarea 1
+            case 2:
+                tarea 2
+            case 3:
+                tarea 3
+            case 4:
+                tarea 4
+            case 5:
+                tarea 5
+            case default:
+                tarea 6
+        }
+        Complejidad ciclomática? 6          >>>>> Está condicionada por los requerimientos funcionales
+            A qué me ayuda la complejidad ciclomática? Para que me vale el dato??? con respecto en particular a las pruebas?
+            Es el MINIMO NUMERO DE PRUEBAS que debo realizar a un código
+        Complejidad cognitiva?   Baja       >>>>> REFACTORIZACION
+
+- Pruebas de caja negra:  Cuando NO CONOCEMOS los detalles de la implementación... y busco lo que se me ocurre que puede tener implicaciones
+   Generalmente estas las realizan los testers... que no conocen el código.... Y LO SUELEN REVENTAR.
+
 Hoy en día tan importante o MAS es que el sistema (software) esté bien construido como que se comporte adecuadamente.
 Ya hemos sufrido años y años el poner sistemas en producción a cualquier coste... LA MANTENIBILIDAD en el futuro me come.
     -> REFACTORIZACION DE UN CODIGO
@@ -202,7 +265,7 @@ Gestor de ciclo de vida de software y dependencias:
 - Compilar el código
 - Ejecutar PRUEBAS del proyecto
 - Generar INFORMES DE PRUEBAS
-- GEnerar el artefacto (entregable) del proyecto
+- Generar el artefacto (entregable) del proyecto
 - Exportar ese artefacto a un registro de artefactos (nexus, artifactory)
 
 Maven funciona mediante PLUGINS, que le aportan la funcionaldiad. Por defecto viene con unos cuantos cargados....
@@ -218,7 +281,7 @@ Los plugins los invoco mediante GOLES: Tareas concretas que queremos hacer sobre
                                                                                                                       /home/miUsuario/.m2   
                     Para que proyecto pueda ser usado como dependencia en otros proyectos. 
                     A día de hoy esto lo hacemos MUCHISIMO
-- clean
+- clean             Borra la carpeta target
 
 Maven nos impone (es configurable ... pero no lo cambiamos NUNCA JAMAS !!!) una determina estructura de carpetas para trabajar:
 
@@ -229,8 +292,8 @@ Maven nos impone (es configurable ... pero no lo cambiamos NUNCA JAMAS !!!) una 
       |   |   |- resources/         Archivos de configuración y otros que puedan ser necesarios para la correcta ejecución de mi programa
       |   |   |- webapp/
       |   |- test/                  Código de los programas de prueba
-      |   |   |- java/              Código java de las pruebas unitarias (u otro tipo de pruebas)
-      |   |   |- resources/         Archivos de configuración y otros que puedan ser necesarios para la correcta ejecución de mis pruebas
+      |       |- java/              Código java de las pruebas unitarias (u otro tipo de pruebas)
+      |       |- resources/         Archivos de configuración y otros que puedan ser necesarios para la correcta ejecución de mis pruebas
       |- target/
       |   |- classes/
       |   |- test-classes/
