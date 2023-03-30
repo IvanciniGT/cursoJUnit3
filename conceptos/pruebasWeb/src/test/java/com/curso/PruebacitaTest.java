@@ -25,7 +25,7 @@ public class PruebacitaTest {
   @BeforeEach
   public void setUp() throws Exception {
     DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setBrowserName("chrome");
+    capabilities.setBrowserName("firefox");
     driver = new RemoteWebDriver( new URL("http://54.229.30.127:4444/wd/hub"), capabilities );
   }
   
@@ -34,23 +34,31 @@ public class PruebacitaTest {
     driver.quit();
   }
   
-  @Test
-  public void loginNoExitoso() throws Exception{
+  // EXCEL CSV 
+  // Usuario.  Password
+  //  x          √
+  //  √          x
+  //  x          x
+  @ParameterizedTest
+  @CsvFileSource(resources="/login_nok.csv", numLinesToSkip=1)
+  public void loginNoExitoso(String usuario, String password) throws Exception{
     driver.get("https://katalon-demo-cura.herokuapp.com/");
     //driver.manage().window().setSize(new Dimension(1561, 1406));
     // Boton reservar cita
     driver.findElement(By.id("btn-make-appointment")).click();
 
     // Rellenar el formulario de login
-    driver.findElement(By.id("txt-username")).sendKeys("Ruina");
-    driver.findElement(By.id("txt-password")).sendKeys("ThisIsNotAPassword");
+    driver.findElement(By.id("txt-username")).sendKeys(usuario);
+    driver.findElement(By.id("txt-password")).sendKeys(password);
+
+    capturarPantalla(driver, "login_nok_antes_"+usuario+"_"+password);
+
     driver.findElement(By.id("btn-login")).click();
     
     //*[@id="login"]/div/div/div[1]/p[2]
     String textoDevuelto= driver.findElement(By.xpath("//section[@id='login']//p[2]")).getText();
     Assertions.assertTrue(textoDevuelto.contains("Login failed"));
-        capturarPantalla(driver, "login_nok");
-
+    capturarPantalla(driver, "login_nok_"+usuario+"_"+password);
   }
   
   
