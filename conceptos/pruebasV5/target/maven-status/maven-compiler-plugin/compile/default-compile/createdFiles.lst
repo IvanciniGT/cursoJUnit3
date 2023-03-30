@@ -1,3 +1,7 @@
-com/curso/SuministradorDeDiccionarios.class
-com/curso/SuministradorDeDiccionariosFactory.class
+com/curso/impl/Utilidades.class
+com/curso/impl/SuministradorDeDiccionariosDesdeFicheros.class
 com/curso/Diccionario.class
+com/curso/SuministradorDeDiccionariosFactory.class
+com/curso/impl/DiccionarioDesdeFichero$Sugerencia.class
+com/curso/SuministradorDeDiccionarios.class
+com/curso/impl/DiccionarioDesdeFichero.class

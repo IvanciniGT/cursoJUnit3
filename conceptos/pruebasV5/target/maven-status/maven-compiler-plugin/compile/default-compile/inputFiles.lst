@@ -1,1 +1,6 @@
-/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV4/src/main/java/com/curso/Contador.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/SuministradorDeDiccionariosFactory.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/impl/SuministradorDeDiccionariosDesdeFicheros.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/impl/Utilidades.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/Diccionario.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/impl/DiccionarioDesdeFichero.java
+/home/ubuntu/environment/cursoJavaJunit/conceptos/pruebasV5/src/main/java/com/curso/SuministradorDeDiccionarios.java
