@@ -1,3 +1,9 @@
+Para ejecutar las pruebas:
+$ mvn test
+
+Para generar el informe de pruebas:
+$ mvn surefire-report:report
+
 
 # Libreria: Diccionario
 
